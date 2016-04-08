@@ -1,0 +1,2 @@
+./jmeter -n -t test.jmx -l res.tml
+
