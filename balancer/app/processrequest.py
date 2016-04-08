@@ -1,13 +1,13 @@
-from flask import Flask
+#from flask import Flask
 import redis
 import requests
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
-app = Flask(__name__)
+#app = Flask(__name__)
 
-import logging
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.ERROR)
+#import logging
+#log = logging.getLogger('werkzeug')
+#log.setLevel(logging.ERROR)
 
 # ensure following keys already exist in redis:
 # s1, s2, ts1, ts2, fail-count-1, fail-count-2
@@ -46,7 +46,7 @@ def addFailCount(x):
 def clearFailCount(x):
 	r.set("fail-count-" + x, 0)
 
-@app.route("/add/<int:a>/<int:b>")
+#@app.route("/add/<int:a>/<int:b>")
 def add(a,b):
 	x = getServerNo()
 	if x == 1:
@@ -76,5 +76,5 @@ def add(a,b):
 	else:
 		return "Request cannot be processed"
 
-if __name__ == '__main__':
-	app.run(threaded=True, host='0.0.0.0', port=9090)
+#if __name__ == '__main__':
+#	app.run(threaded=True, host='0.0.0.0', port=9090)
